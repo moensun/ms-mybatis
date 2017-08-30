@@ -77,7 +77,7 @@ public class BigPageInfo<T> implements Serializable {
             this.pageSize = list.size();
             this.size = list.size();
             this.startRow = 0;
-            this.endRow = list.size() > 0 ? list.size() - 1 : 0;
+            this.endRow = list.isEmpty() ? 0 : list.size() - 1;
         }
 
         if(list instanceof Collection){
@@ -100,8 +100,8 @@ public class BigPageInfo<T> implements Serializable {
     }
 
     private void calcNavigatepageNums(List<T> list){
-        int size = list.size();
-        int pageCount = size/this.pageSize + ((size%this.pageSize>0)?1:0);
+        int listSize = list.size();
+        int pageCount = listSize/this.pageSize + ((listSize%this.pageSize>0)?1:0);
         if( this.navigatePages/2 >= this.pageNum){
             this.navigateFirstPage = 1;
         }else {
