@@ -110,18 +110,25 @@ public class BigPageInfo<T> implements Serializable {
 
         this.navigateLastPage = this.pageNum - 1 + pageCount;
 
+        if( pageCount < (this.navigatePages/2+this.navigatePages%2) ){
+            this.navigateFirstPage = this.navigateFirstPage - (this.navigatePages/2+this.navigatePages%2 - pageCount);
+            if(this.navigateFirstPage < 1){
+                this.navigateFirstPage = 1;
+            }
+        }
+
         int navCount = this.navigateLastPage-this.navigateFirstPage;
 
         if(this.pageNum>1){
             this.hasPreviousPage = true;
         }
-        if(navCount == this.navigatePages){
+        if(pageCount>1){
             this.hasNextPage = true;
         }
 
 
         this.navigatepageNums = new int[navCount+1];
-        for (int i =1;i<=navCount;i++){
+        for (int i = 0;i <= navCount;i++){
             this.navigatepageNums[i] = this.navigateFirstPage+i;
         }
     }
