@@ -54,6 +54,8 @@ public class BigPageInfo<T> implements Serializable {
     //导航条上的最后一页
     private int navigateLastPage;
 
+    private boolean hasMore = false;
+
     public BigPageInfo(List<T> list) {
         if(list instanceof BigPage){
             BigPage page = (BigPage) list;
@@ -126,6 +128,10 @@ public class BigPageInfo<T> implements Serializable {
             this.hasNextPage = true;
         }
 
+        int queryPages = (this.pageNum<=(this.pageSize/2+this.pageSize%2))?(this.pageSize-this.pageNum+2):(this.pageSize/2+this.pageSize%2+1);
+        if(pageCount >= queryPages){
+            this.hasMore = true;
+        }
 
         this.navigatepageNums = new int[navCount+1];
         for (int i = 0;i <= navCount;i++){

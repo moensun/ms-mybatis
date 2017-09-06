@@ -90,7 +90,6 @@ public class BigPage<E> extends ArrayList<E> implements Closeable {
     private void calculateStartRowAndSelectSize(){
         this.startRow = this.pageNum > 0 ? (this.pageNum - 1) * this.pageSize : 0;
         int queryPages = (this.pageNum<=(this.pageSize/2+this.pageSize%2))?(this.pageSize-this.pageNum+2):(this.pageSize/2+this.pageSize%2+1);
-        if(queryPages < 2){ queryPages =2;}
         this.querySize = queryPages * this.pageSize;
     }
 
