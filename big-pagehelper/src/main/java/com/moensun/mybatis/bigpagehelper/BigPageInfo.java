@@ -104,6 +104,11 @@ public class BigPageInfo<T> implements Serializable {
     private void calcNavigatepageNums(List<T> list){
         int listSize = list.size();
         int pageCount = listSize/this.pageSize + ((listSize%this.pageSize>0)?1:0);
+        int queryPages = (this.pageNum<=(this.pageSize/2+this.pageSize%2))?(this.pageSize-this.pageNum+2):(this.pageSize/2+this.pageSize%2+1);
+        if(pageCount >= queryPages){
+            this.hasMore = true;
+        }
+
         if( this.navigatePages/2 >= this.pageNum){
             this.navigateFirstPage = 1;
         }else {
@@ -126,11 +131,6 @@ public class BigPageInfo<T> implements Serializable {
         }
         if(pageCount>1){
             this.hasNextPage = true;
-        }
-
-        int queryPages = (this.pageNum<=(this.pageSize/2+this.pageSize%2))?(this.pageSize-this.pageNum+2):(this.pageSize/2+this.pageSize%2+1);
-        if(pageCount >= queryPages){
-            this.hasMore = true;
         }
 
         this.navigatepageNums = new int[navCount+1];
