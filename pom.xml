@@ -18,6 +18,55 @@
         <jdk.version>1.8</jdk.version>
     </properties>
 
+
+    <url>https://github.com/moensun/ms-mybatis</url>
+
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>https://raw.githubusercontent.com/xtuhcy/gecco/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Bane.Shi</name>
+            <email>fengxiaotx@163.com</email>
+            <organization>Moensun</organization>
+            <organizationUrl>http://www.moensun.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>
+            scm:git:https://github.com/moensun/ms-mybatis.git
+        </connection>
+        <developerConnection>
+            scm:git:https://github.com/moensun/ms-mybatis.git
+        </developerConnection>
+        <url>https://github.com/moensun/ms-mybatis</url>
+    </scm>
+
+    <distributionManagement>
+        <!--        <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                </repository>-->
+        <snapshotRepository>
+            <id>moensun</id>
+            <url>http://maven.moensun.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>moensun</id>
+            <url>http://maven.moensun.com/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>

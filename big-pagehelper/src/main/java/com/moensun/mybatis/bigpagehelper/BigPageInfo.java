@@ -266,4 +266,12 @@ public class BigPageInfo<T> implements Serializable {
     public void setNavigateLastPage(int navigateLastPage) {
         this.navigateLastPage = navigateLastPage;
     }
+
+    public boolean isHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
+    }
 }
