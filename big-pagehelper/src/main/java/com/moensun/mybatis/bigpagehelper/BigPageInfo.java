@@ -115,7 +115,8 @@ public class BigPageInfo<T> implements Serializable {
             this.navigateFirstPage = (this.pageNum - this.navigatePages/2);
         }
 
-        this.navigateLastPage = this.pageNum - 1 + pageCount;
+        //分页显示的最后页数，分查询页数有超出和无超出两种情况
+        this.navigateLastPage = this.pageNum - 1 + (this.hasMore?(this.navigatePages):pageCount);
 
         if( pageCount < (this.navigatePages/2+this.navigatePages%2) ){
             this.navigateFirstPage = this.navigateFirstPage - (this.navigatePages/2+this.navigatePages%2 - pageCount);
