@@ -48,7 +48,7 @@ public class BigPageInfo<T> implements Serializable {
     //导航页码数
     private int navigatePages;
     //所有导航页号
-    private int[] navigatepageNums;
+    private int[] navigatePageNumArray;
     //导航条上的第一页
     private int navigateFirstPage;
     //导航条上的最后一页
@@ -84,7 +84,7 @@ public class BigPageInfo<T> implements Serializable {
 
         if(list instanceof Collection){
             resList(list);
-            calcNavigatepageNums(list);
+            calcnavigatePageNumArray(list);
         }
 
     }
@@ -101,7 +101,7 @@ public class BigPageInfo<T> implements Serializable {
         }
     }
 
-    private void calcNavigatepageNums(List<T> list){
+    private void calcnavigatePageNumArray(List<T> list){
         int listSize = list.size();
         int pageCount = listSize/this.pageSize + ((listSize%this.pageSize>0)?1:0);
         int queryPages = (this.pageNum<=(this.pageSize/2+this.pageSize%2))?(this.pageSize-this.pageNum+2):(this.pageSize/2+this.pageSize%2+1);
@@ -135,9 +135,9 @@ public class BigPageInfo<T> implements Serializable {
             this.hasNextPage = true;
         }
 
-        this.navigatepageNums = new int[navCount+1];
+        this.navigatePageNumArray = new int[navCount+1];
         for (int i = 0;i <= navCount;i++){
-            this.navigatepageNums[i] = this.navigateFirstPage+i;
+            this.navigatePageNumArray[i] = this.navigateFirstPage+i;
         }
     }
 
@@ -245,12 +245,12 @@ public class BigPageInfo<T> implements Serializable {
         this.navigatePages = navigatePages;
     }
 
-    public int[] getNavigatepageNums() {
-        return navigatepageNums;
+    public int[] getNavigatePageNumArray() {
+        return navigatePageNumArray;
     }
 
-    public void setNavigatepageNums(int[] navigatepageNums) {
-        this.navigatepageNums = navigatepageNums;
+    public void setNavigatePageNumArray(int[] navigatePageNumArray) {
+        this.navigatePageNumArray = navigatePageNumArray;
     }
 
     public int getNavigateFirstPage() {
