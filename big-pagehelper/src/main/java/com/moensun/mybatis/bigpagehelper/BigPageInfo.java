@@ -56,6 +56,13 @@ public class BigPageInfo<T> implements Serializable {
 
     private boolean hasMore = false;
 
+    public BigPageInfo() {
+        this.isFirstPage = false;
+        this.isLastPage = false;
+        this.hasPreviousPage = false;
+        this.hasNextPage = false;
+    }
+
     public BigPageInfo(List<T> list) {
         if(list instanceof BigPage){
             BigPage page = (BigPage) list;
